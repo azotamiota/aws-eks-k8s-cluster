@@ -1,4 +1,4 @@
 .DC_Store
-*.tfstate
+*.tfstate*
 .terraform.lock.hcl
 terraform-provider*
