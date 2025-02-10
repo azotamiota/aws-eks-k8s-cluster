@@ -9,11 +9,11 @@ variable "availability_zones" {
 }
 
 variable "finops_billing_code" {
-    description = "Required finops code"
-    type = string
+  description = "Required finops code"
+  type        = string
 }
 
 variable "servicenow_application_id" {
-    description = "Required finops code"
-    type = string
+  description = "Required finops code"
+  type        = string
 }
