@@ -1,16 +1,18 @@
-resource "aws_dynamodb_table" "terraform_locks_eks_portfolio" {
-  name         = "terraform-lock-table-eks-portfolio" # Replace with your desired table name
-  billing_mode = "PAY_PER_REQUEST"
-  hash_key     = "LockID"
+# **************************** Removed from the state *****************************
 
-  attribute {
-    name = "LockID"
-    type = "S"
-  }
+# resource "aws_dynamodb_table" "terraform_locks_eks_portfolio" {
+#   name         = "terraform-lock-table-eks-portfolio" # Replace with your desired table name
+#   billing_mode = "PAY_PER_REQUEST"
+#   hash_key     = "LockID"
 
-  tags = {
-    Name                      = "Terraform Lock Table",
-    finops_billing_code       = var.finops_billing_code,
-    servicenow_application_id = var.servicenow_application_id
-  }
-}
+#   attribute {
+#     name = "LockID"
+#     type = "S"
+#   }
+
+#   tags = {
+#     Name                      = "Terraform Lock Table",
+#     finops_billing_code       = var.finops_billing_code,
+#     servicenow_application_id = var.servicenow_application_id
+#   }
+# }
