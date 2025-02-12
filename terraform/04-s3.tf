@@ -1,4 +1,4 @@
-# **************************** Removed from the state *****************************
+# **************************** REMOTE BACKEND!! Removed from the state *****************************
 
 # resource "aws_s3_bucket" "terraform_state_eks_portfolio" {
 #   bucket = "eks-portfolio-s3-state-bucket"

@@ -1,4 +1,4 @@
-# **************************** Removed from the state *****************************
+# **************************** REMOTE BACKEND!! Removed from the state *****************************
 
 # resource "aws_dynamodb_table" "terraform_locks_eks_portfolio" {
 #   name         = "terraform-lock-table-eks-portfolio" # Replace with your desired table name
