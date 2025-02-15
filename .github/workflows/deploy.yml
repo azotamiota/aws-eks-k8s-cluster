@@ -10,7 +10,7 @@ on:
   workflow_dispatch: # Allows manual triggering of the workflow
 
 jobs:
-  setup:
+  checkout_repository:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repository
@@ -19,6 +19,8 @@ jobs:
       - name: Execute first command
         run: |
           pwd
+          ls -lart
+          find . -name "decrypt.sh"
           echo "Hello World from GitHub Actions"
 
       - name: Execute decrypt.sh
