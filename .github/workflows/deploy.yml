@@ -24,7 +24,7 @@ jobs:
           echo "Hello World from GitHub Actions"
 
       - name: Execute decrypt.sh
-        run: .secrets/decrypt.sh
+        run: ./secrets/decrypt.sh
 
   # plan:
   #   runs-on: ubuntu-latest
