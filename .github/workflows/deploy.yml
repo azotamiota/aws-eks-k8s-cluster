@@ -19,12 +19,10 @@ jobs:
       - name: Execute first command
         run: |
           pwd
-          ls -lart
-          find . -name "decrypt.sh"
           echo "Hello World from GitHub Actions"
 
-      - name: Execute decrypt.sh
-        run: ./secrets/decrypt.sh
+      # - name: Execute decrypt.sh
+      #   run: ./secrets/decrypt.sh
 
   # plan:
   #   runs-on: ubuntu-latest
