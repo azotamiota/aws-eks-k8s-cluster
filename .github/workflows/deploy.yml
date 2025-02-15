@@ -3,7 +3,7 @@ name: Terraform Deployment Pipeline
 on:
   push:
     branches:
-      - feature
+      - feature-*
   pull_request:
     branches:
       - main
@@ -17,10 +17,12 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Execute first command
-        run: echo "Hello World from GitHub Actions"
+        run: |
+          pwd
+          echo "Hello World from GitHub Actions"
 
-      # - name: Execute decrypt.sh
-      #   run: bash decrypt.sh
+      - name: Execute decrypt.sh
+        run: .secrets/decrypt.sh
 
   # plan:
   #   runs-on: ubuntu-latest
