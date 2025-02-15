@@ -1,5 +1,6 @@
-.DC_Store
+.DS_Store
 *.tfstate*
 .terraform.lock.hcl
 terraform-provider*
 *.tfvars
+decrypted_secrets
