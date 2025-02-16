@@ -10,3 +10,4 @@ for recipient in $users; do
 done
 
 gpg --batch --yes --always-trust --output "secrets/encrypted_secrets/terraform.tfvars.encrypted" ${recipients} --encrypt ./terraform/terraform.tfvars
+gpg --batch --yes --always-trust --output "secrets/encrypted_secrets/export_keys.sh.encrypted" ${recipients} --encrypt ./decrypted_scripts/export_keys.sh
