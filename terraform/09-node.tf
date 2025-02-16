@@ -34,7 +34,7 @@ resource "aws_iam_role_policy_attachment" "nodes-AmazonEC2ContainerRegistryReadO
 # aws node group 
 
 resource "aws_eks_node_group" "eks_portfolio_private_nodes" {
-#   ami_type        = "AL2_ARM_64"
+  #   ami_type        = "AL2_ARM_64"
   cluster_name    = aws_eks_cluster.eks_portfolio_cluster.name
   node_group_name = "eks-portfolio-private-nodes"
   node_role_arn   = aws_iam_role.eks_portfolio_nodes_role.arn
@@ -45,7 +45,7 @@ resource "aws_eks_node_group" "eks_portfolio_private_nodes" {
   )
 
   capacity_type  = "ON_DEMAND"
-  instance_types = ["t2.medium"]
+  instance_types = ["t3.micro"]
 
   scaling_config {
     desired_size = 2
