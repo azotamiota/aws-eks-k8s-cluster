@@ -4,3 +4,4 @@
 terraform-provider*
 *.tfvars
 decrypted_secrets
+.terraform
