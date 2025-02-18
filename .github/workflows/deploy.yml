@@ -29,6 +29,9 @@ jobs:
         run: |
           echo "$GPG_PRIVATE_KEY" | gpg --batch --import
           echo "🔑 GPG key imported successfully"
+      - name: Decrypt Secrets
+        run: ./secrets/decrypt.sh
+
       # - name: Execute decrypt.sh
       #   run: ./secrets/decrypt.sh
 
