@@ -17,7 +17,7 @@ jobs:
         run: |
           pwd
           echo "Hello World from GitHub Actions"
-  decrypt_secrets:
+  deploy_resources:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repository
@@ -29,14 +29,16 @@ jobs:
           echo "$GPG_PRIVATE_KEY" | gpg --batch --import
           echo "🔑 GPG key imported successfully"
       - name: Decrypt Secrets
+
         run: ./secrets/decrypt.sh
       - name: Initialize Terraform
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         run: |
           pwd
-          cd terraform
-          ls -lart
-          # ./scripts/install_tfenv.sh
-          # cd terraform && terraform init
+          ./scripts/install_tfenv.sh
+          cd terraform && terraform init
 
       # - name: Execute decrypt.sh
       #   run: ./secrets/decrypt.sh
