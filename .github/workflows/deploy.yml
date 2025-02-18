@@ -33,8 +33,10 @@ jobs:
       - name: Initialize Terraform
         run: |
           pwd
-          ./scripts/install_tfenv.sh
-          cd terraform && terraform init
+          cd terraform
+          ls -lart
+          # ./scripts/install_tfenv.sh
+          # cd terraform && terraform init
 
       # - name: Execute decrypt.sh
       #   run: ./secrets/decrypt.sh
