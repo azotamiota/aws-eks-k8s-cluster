@@ -1,20 +1,17 @@
 FROM ubuntu:latest
 
-RUN apt-get update && apt-get install -y gnupg2
+# Use an alternative mirror
+RUN apt-get update -y && apt-get upgrade -y
 
-RUN gpg --batch --generate-key <<EOF
-    %no-protection
-    Key-Type: RSA
-    Key-Length: 4096
-    Name-Real: Ubuntu GPG Key
-    Name-Comment: GitHub Actions GPG Key
-    Name-Email: ubuntu-gpg@example.com
-    Expire-Date: 0
-EOF
+RUN apt-get install -y git
 
-RUN gpg --armor --export ubuntu-gpg@example.com > /root/ubuntu-gpg-public.key
+## Installing TFEnv
+RUN git clone https://github.com/kamatama41/tfenv.git /usr/share/.tfenv && \
+    ln -s /usr/share/.tfenv/bin/* /usr/local/bin/
 
-RUN cat /root/ubuntu-gpg-public.key
+RUN tfenv install latest && \
+    tfenv install 0.12.21 && \
+    tfenv use 0.12.21
 
 WORKDIR /workspace
 

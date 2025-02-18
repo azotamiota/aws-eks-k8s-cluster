@@ -30,6 +30,10 @@ jobs:
           echo "🔑 GPG key imported successfully"
       - name: Decrypt Secrets
         run: ./secrets/decrypt.sh
+      - name: Initialize Terraform
+        run: |
+          ./scripts/install_tfenv.sh
+          cd terraform && terraform init
 
       # - name: Execute decrypt.sh
       #   run: ./secrets/decrypt.sh
