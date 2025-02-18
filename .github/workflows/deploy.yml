@@ -20,7 +20,17 @@ jobs:
         run: |
           pwd
           echo "Hello World from GitHub Actions"
-
+  decrypt_secrets:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Import GPG Key
+        env:
+          GPG_PRIVATE_KEY: ${{ secrets.GPG_PRIVATE_KEY }}
+        
+        uses: actions/checkout@v3
+        run: |
+          echo "$GPG_PRIVATE_KEY" | gpg --batch --import
+          echo "🔑 GPG key imported successfully"
       # - name: Execute decrypt.sh
       #   run: ./secrets/decrypt.sh
 
