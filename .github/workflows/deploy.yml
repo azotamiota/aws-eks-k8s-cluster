@@ -39,6 +39,8 @@ jobs:
           pwd
           ./scripts/install_tfenv.sh
           cd terraform && terraform init
+      - name: Terraform plan
+        run: terraform plan
 
       # - name: Execute decrypt.sh
       #   run: ./secrets/decrypt.sh
