@@ -1,7 +1,5 @@
 provider "aws" {
   region     = "us-east-1"
-  access_key = var.access_key
-  secret_key = var.secret_key
 }
 
 terraform {
@@ -18,5 +16,7 @@ terraform {
     region         = "us-east-1"
     dynamodb_table = "terraform-lock-table-eks-portfolio"
     encrypt        = true
+    access_key = var.access_key
+    secret_key = var.secret_key
   }
 }
