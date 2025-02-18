@@ -38,11 +38,10 @@ jobs:
         run: |
           pwd
           ./scripts/install_tfenv.sh
-          cd terraform && terraform init
-      - name: Terraform validate
-        run: pwd && terraform validate
-      - name: Terraform plan
-        run: pwd && ls -lart && terraform plan
+          cd terraform && terraform init 
+      - name: Terraform init & plan
+        run: terraform validate && terraform plan
+
 
       # - name: Execute decrypt.sh
       #   run: ./secrets/decrypt.sh
