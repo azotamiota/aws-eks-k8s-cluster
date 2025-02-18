@@ -1,6 +1,6 @@
 resource "aws_eip" "nat_elastic_ip" {
-  vpc  = true
-  tags = merge(tomap({ "Name" = "nat-elastic-ip" }), var.permanent_tags)
+  domain = "vpc"
+  tags   = merge(tomap({ "Name" = "nat-elastic-ip" }), var.permanent_tags)
 }
 
 resource "aws_nat_gateway" "eks_portfolio_nat_gw" {
