@@ -8,6 +8,10 @@ terraform {
       source  = "hashicorp/aws"
       version = "~> 5.86"
     }
+    tls = {
+      source  = "hashicorp/tls"
+      version = "~> 5.0"
+    }
   }
   required_version = ">= 0.12"
   backend "s3" {
