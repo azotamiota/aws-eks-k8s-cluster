@@ -26,8 +26,8 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v3
       - name: Code quality tests
-        continue-on-error: true
         run: ./scripts/pre-commit.sh
+        continue-on-error: true
       - name: Import GPG Key
         env:
           GPG_PRIVATE_KEY: ${{ secrets.GPG_PRIVATE_KEY }}
