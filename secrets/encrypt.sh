@@ -2,7 +2,7 @@
 
 ./secrets/import.sh
 
-users=$(for i in secrets/recipients/*.asc ; do gpg --import --keyid-format 0xlong --import-options show-only "${i}" | perl -nle 's/^\s*//g; print unless /^(pub|uid|sub)/;' ; done)
+users=$(for i in secrets/recipients/*.asc ; do gpg --import --keyid-format 0xlong --import-options show-only --quiet "${i}" | perl -nle 's/^\s*//g; print unless /^(pub|uid|sub)/;' ; done)
 
 recipients=""
 for recipient in $users; do
