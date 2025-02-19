@@ -5,4 +5,3 @@ terraform-provider*
 *.tfvars
 decrypted_scripts
 .terraform
-*private.key
