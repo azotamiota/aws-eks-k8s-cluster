@@ -2,5 +2,6 @@
 
 # set -eo pipefail
 
-sudo apt-get update && sudo apt-get install -y pre-commit tflint
+sudo apt-get update && sudo apt-get install -y pre-commit
+curl -s https://raw.githubusercontent.com/terraform-linters/tflint/master/install_linux.sh | bash
 pre-commit run --all-files
