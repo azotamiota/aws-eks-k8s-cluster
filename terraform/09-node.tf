@@ -31,7 +31,7 @@
 # }
 
 
-# # aws node group 
+# # aws node group
 
 # resource "aws_eks_node_group" "eks_portfolio_private_nodes" {
 #   #   ami_type        = "AL2_ARM_64"
