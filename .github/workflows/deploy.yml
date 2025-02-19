@@ -25,6 +25,8 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v3
+      - name: Install Terraform
+        run: ./scripts/install_tfenv.sh
       - name: Code quality tests
         run: ./scripts/pre-commit.sh
         continue-on-error: true
@@ -36,8 +38,6 @@ jobs:
           echo "GPG key imported successfully"
       - name: Decrypt Secrets
         run: ./secrets/decrypt.sh
-      - name: Install Terraform
-        run: ./scripts/install_tfenv.sh
       - name: Initialise Terraform
         run: cd terraform && terraform init
       - name: Terraform plan
