@@ -17,13 +17,3 @@ variable "permanent_tags" {
   type        = map(string)
   description = "Permanent tags"
 }
-
-variable "access_key" {
-  type        = string
-  description = "Account access key"
-}
-
-variable "secret_key" {
-  type        = string
-  description = "Account secret key"
-}
