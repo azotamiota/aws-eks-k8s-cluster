@@ -1,5 +1,5 @@
 provider "aws" {
-  region = "us-east-1"
+  region = "eu-west-1"
 }
 
 terraform {
@@ -14,11 +14,11 @@ terraform {
     }
   }
   required_version = ">= 0.12"
-  backend "s3" {
-    bucket         = "portfolio-s3-backend-state-bucket"
-    key            = "terraform-state/terraform.tfstate"
-    region         = "us-east-1"
-    dynamodb_table = "terraform-lock-table-eks-portfolio"
-    encrypt        = true
-  }
+  # backend "s3" {
+  #   bucket         = "portfolio-s3-backend-state-bucket"
+  #   key            = "terraform-state/terraform.tfstate"
+  #   region         = "us-east-1"
+  #   dynamodb_table = "terraform-lock-table-eks-portfolio"
+  #   encrypt        = true
+  # }
 }
