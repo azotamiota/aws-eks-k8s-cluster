@@ -1,13 +1,13 @@
-# **************************** REMOTE BACKEND!! Removed from the state *****************************
+# # **************************** REMOTE BACKEND!! Removed from the state *****************************
 
-resource "aws_dynamodb_table" "terraform_locks_eks_portfolio" {
-  name         = "terraform-lock-table-eks-portfolio"
-  billing_mode = "PAY_PER_REQUEST"
-  hash_key     = "LockID"
+# resource "aws_dynamodb_table" "terraform_locks_eks_portfolio" {
+#   name         = "terraform-lock-table-eks-portfolio"
+#   billing_mode = "PAY_PER_REQUEST"
+#   hash_key     = "LockID"
 
-  attribute {
-    name = "LockID"
-    type = "S"
-  }
-  tags = merge(tomap({ "Name" = "Terraform Lock Table N. Virginia region" }), var.permanent_tags)
-}
+#   attribute {
+#     name = "LockID"
+#     type = "S"
+#   }
+#   tags = merge(tomap({ "Name" = "Terraform Lock Table N. Virginia region" }), var.permanent_tags)
+# }

@@ -41,4 +41,4 @@ jobs:
       - name: Initialise Terraform
         run: cd terraform && terraform init
       - name: Terraform plan
-        run: cd terraform && terraform plan
+        run: cd terraform && terraform plan -var-file=../secrets/decrypted_secrets/terraform.tfvars
