@@ -1,12 +1,12 @@
 name: Terraform Deployment Pipeline
 
 on:
-  # push:
-  #   branches:
-  #     - feature-*
-  pull_request:
+  push:
     branches:
-      - main
+      - private*
+  # pull_request:
+  #   branches:
+  #     - main
   workflow_dispatch: # Allows manual triggering of the workflow
 
 jobs:
