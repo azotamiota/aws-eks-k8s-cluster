@@ -19,6 +19,6 @@ variable "permanent_tags" {
 }
 
 variable "region" {
-  type        = string
+  type    = string
   default = "eu-west-2"
 }
