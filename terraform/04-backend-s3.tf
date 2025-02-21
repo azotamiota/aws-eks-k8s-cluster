@@ -1,7 +1,7 @@
 # # **************************** REMOTE BACKEND!! Removed from the state *****************************
 
 # resource "aws_s3_bucket" "terraform_state_eks_portfolio" {
-#   bucket = "portfolio-s3-backend-state-bucket"
+#   bucket = "portfolio-s3-backend-state-bucket-eu-west-2"
 
 #   lifecycle {
 #     prevent_destroy = true
