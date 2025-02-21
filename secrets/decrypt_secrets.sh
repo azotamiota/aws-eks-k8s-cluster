@@ -12,3 +12,5 @@ for path_to_secret in secrets/encrypted_secrets/*.encrypted; do
   gpg --batch --yes --quiet --output "./secrets/decrypted_secrets/$basename" --decrypt ./secrets/encrypted_secrets/$encrypted_file
   echo "Done."
 done
+
+mv ./secrets/decrypted_secrets/terraform.tfvars ./terraform
