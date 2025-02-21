@@ -25,3 +25,8 @@ variable "permanent_tags" {
   type        = map(string)
   description = "Permanent tags"
 }
+
+variable "region" {
+  type    = string
+  default = "eu-west-2"
+}
