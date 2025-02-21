@@ -3,5 +3,4 @@
 .terraform.lock.hcl
 terraform-provider*
 *.tfvars
-decrypted_scripts
 .terraform
