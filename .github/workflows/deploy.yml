@@ -41,4 +41,4 @@ jobs:
       - name: Initialise Terraform
         run: cd terraform && terraform init
       - name: Terraform plan
-        run: cd terraform && terraform plan
+        run: cd terraform && terraform plan -out tfplan.output
