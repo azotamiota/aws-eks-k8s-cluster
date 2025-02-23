@@ -3,7 +3,7 @@ name: Terraform Deployment Pipeline
 on:
   push:
     branches:
-      - feature*
+      - feat*
   pull_request:
     branches:
       - main
@@ -36,3 +36,5 @@ jobs:
         run: cd terraform && terraform init
       - name: Terraform plan
         run: cd terraform && terraform plan -out tfplan.output
+      - name: Terraform apply
+        run: cd terraform && terraform apply tfplan.output    
