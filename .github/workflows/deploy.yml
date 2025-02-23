@@ -10,13 +10,6 @@ on:
   workflow_dispatch: # Allows manual triggering of the workflow
 
 jobs:
-  test_job:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Execute first command
-        run: |
-          pwd
-          echo "Hello World from GitHub Actions"
   deploy_resources:
     runs-on: ubuntu-latest
     container:
@@ -27,11 +20,9 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v3
-      # - name: Install Terraform
-      #   run: ./scripts/install_tfenv.sh
-      # - name: Code quality tests
-      #   run: ./scripts/pre-commit.sh
-      #   continue-on-error: true
+      - name: Code quality tests
+        run: pre-commit run --all-files
+        continue-on-error: true
       - name: Import GPG Key
         env:
           GPG_PRIVATE_KEY: ${{ secrets.GPG_PRIVATE_KEY }}
