@@ -11,6 +11,7 @@ repos:
         args: [--allow-missing-credentials]
       - id: detect-private-key
       - id: check-shebang-scripts-are-executable
+  # ****** For future usage ********
   # - repo: https://github.com/adrienverge/yamllint
   #   rev: v1.32.0
   #   hooks:

@@ -13,4 +13,4 @@ for path_to_secret in secrets/encrypted_secrets/*.encrypted; do
   echo "Done."
 done
 
-mv ./secrets/decrypted_secrets/terraform.tfvars ./terraform
+cp ./secrets/decrypted_secrets/terraform.tfvars ./terraform

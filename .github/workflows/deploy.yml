@@ -3,32 +3,26 @@ name: Terraform Deployment Pipeline
 on:
   push:
     branches:
-      - private*
+      - feature*
   pull_request:
     branches:
       - main
-  workflow_dispatch: # Allows manual triggering of the workflow
+  workflow_dispatch:
 
 jobs:
-  test_job:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Execute first command
-        run: |
-          pwd
-          echo "Hello World from GitHub Actions"
   deploy_resources:
     runs-on: ubuntu-latest
+    container:
+      image: azotamiota/terraform-tools:root-v1
+      # options: --user root
     env:
       AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
       AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v3
-      - name: Install Terraform
-        run: ./scripts/install_tfenv.sh
       - name: Code quality tests
-        run: ./scripts/pre-commit.sh
+        run: pre-commit install && pre-commit run --all-files
         continue-on-error: true
       - name: Import GPG Key
         env:
