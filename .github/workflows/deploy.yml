@@ -22,12 +22,13 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v3
       - name: Code quality tests
-        run: pwd;ls -lart;pre-commit -V;pre-commit install;cat /github/home/.cache/pre-commit/pre-commit.log
+        run: pwd;ls -lart;pre-commit -V;pre-commit install;
         continue-on-error: true
       - name: Import GPG Key
         env:
           GPG_PRIVATE_KEY: ${{ secrets.GPG_PRIVATE_KEY }}
         run: |
+          cat /github/home/.cache/pre-commit/pre-commit.log
           echo "$GPG_PRIVATE_KEY" | gpg --batch --import
           echo "GPG key imported successfully"
       - name: Decrypt Secrets
