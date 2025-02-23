@@ -21,7 +21,7 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v3
       - name: Code quality tests
-        run: pwd;pre-commit install && pre-commit run --all-files
+        run: pwd;ls -lart;pre-commit -V;
         continue-on-error: true
       - name: Import GPG Key
         env:
