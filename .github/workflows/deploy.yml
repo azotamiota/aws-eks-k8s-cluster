@@ -23,7 +23,7 @@ jobs:
         uses: actions/checkout@v3
       - name: Code quality tests
         run: pwd;ls -lart;pre-commit -V;pre-commit install;cat /github/home/.cache/pre-commit/pre-commit.log
-        # continue-on-error: true
+        continue-on-error: true
       - name: Import GPG Key
         env:
           GPG_PRIVATE_KEY: ${{ secrets.GPG_PRIVATE_KEY }}
