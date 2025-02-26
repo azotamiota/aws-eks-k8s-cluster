@@ -35,6 +35,6 @@ jobs:
       - name: AWS login
         run: ./secrets/decrypted_secrets/login_session.sh
       - name: Initialise Terraform
-        run: echo "decrypted stuff: test var: ${TEST_VAR} another test var: ${ANOTHER_TEST_VAR}" && cd terraform && terraform init
+        run: 'echo "decrypted stuff: test var: ${TEST_VAR} another test var: ${ANOTHER_TEST_VAR}" && cd terraform && terraform init'
       - name: Terraform plan
         run: cd terraform && terraform plan -out tfplan.output
