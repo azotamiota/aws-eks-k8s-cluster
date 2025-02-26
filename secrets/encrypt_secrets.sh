@@ -9,9 +9,6 @@ for recipient in $users; do
   recipients="${recipients} --recipient ${recipient} "
 done
 
-echo "Encrypting secrets..."
-gpg --batch --yes --always-trust --output "secrets/encrypted_secrets/terraform.tfvars.encrypted" ${recipients} --encrypt ./terraform/terraform.tfvars
-echo "Done."
 encrypted_path="secrets/encrypted_secrets/"
 for path_to_secret in secrets/decrypted_secrets/*; do
   secret_file=$(echo "$path_to_secret" | tr '/' ' ' | awk '{print $3}')
