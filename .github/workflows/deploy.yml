@@ -33,7 +33,7 @@ jobs:
       - name: Decrypt Secrets
         run: ./secrets/decrypt_secrets.sh
       - name: AWS login
-        run: 'source ./secrets/decrypted_secrets/login_session.sh && echo "decrypted stuff: test var: ${TEST_VAR} another test var: ${ANOTHER_TEST_VAR}"'
+        run: 'eval $(bash ./secrets/decrypted_secrets/login_session.sh) && echo "decrypted stuff: test var: ${TEST_VAR} another test var: ${ANOTHER_TEST_VAR}"'
       - name: Initialise Terraform
         run: 'echo "decrypted stuff: test var: ${TEST_VAR} another test var: ${ANOTHER_TEST_VAR}" && cd terraform && terraform init'
       - name: Terraform plan
