@@ -12,3 +12,11 @@ done
 echo "Encrypting secrets..."
 gpg --batch --yes --always-trust --output "secrets/encrypted_secrets/terraform.tfvars.encrypted" ${recipients} --encrypt ./terraform/terraform.tfvars
 echo "Done."
+encrypted_path="secrets/encrypted_secrets/"
+for path_to_secret in secrets/decrypted_secrets/*; do
+  secret_file=$(echo "$path_to_secret" | tr '/' ' ' | awk '{print $3}')
+  echo "Encrypting secrets..."
+  echo "secret_file: $secret_file"
+  gpg --batch --yes --always-trust --output "$encrypted_path${secret_file}.encrypted" ${recipients} --encrypt ./secrets/decrypted_secrets/$secret_file
+  echo "Done."
+done
