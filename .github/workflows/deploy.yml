@@ -3,7 +3,7 @@ name: Terraform Deployment Pipeline
 on:
   push:
     branches:
-      - feature*
+      - feat*
   pull_request:
     branches:
       - main
@@ -32,7 +32,9 @@ jobs:
           echo "GPG key imported successfully"
       - name: Decrypt Secrets
         run: ./secrets/decrypt_secrets.sh
+      - name: AWS login
+        run: 'eval $(bash ./secrets/decrypted_secrets/login_session.sh) && echo "decrypted stuff: test var: ${TEST_VAR} another test var: ${ANOTHER_TEST_VAR}"'
       - name: Initialise Terraform
-        run: cd terraform && terraform init
+        run: 'echo "decrypted stuff: test var: ${TEST_VAR} another test var: ${ANOTHER_TEST_VAR}" && cd terraform && terraform init'
       - name: Terraform plan
         run: cd terraform && terraform plan -out tfplan.output
