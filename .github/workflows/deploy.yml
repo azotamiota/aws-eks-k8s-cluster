@@ -30,11 +30,12 @@ jobs:
         run: |
           echo "$GPG_PRIVATE_KEY" | gpg --batch --import
           echo "GPG key imported successfully"
+          echo "github envs: $GITHUB_ENV"
       - name: Decrypt Secrets
         run: ./secrets/decrypt_secrets.sh
       - name: AWS login
         run: 'eval $(bash ./secrets/decrypted_secrets/login_session.sh)'
       - name: Initialise Terraform
         run: cd terraform && terraform init
-      # - name: Terraform plan
-      #   run: cd terraform && terraform plan -out tfplan.output
+      - name: Terraform plan
+        run: cd terraform && terraform plan -out tfplan.output
