@@ -30,7 +30,7 @@ jobs:
         run: |
           echo "$GPG_PRIVATE_KEY" | gpg --batch --import
           echo "GPG key imported successfully"
-          echo "github envs: $GITHUB_ENV"
+          echo "github envs: cat $GITHUB_ENV"
       - name: Decrypt Secrets
         run: ./secrets/decrypt_secrets.sh
       - name: AWS login
