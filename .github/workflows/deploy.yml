@@ -56,9 +56,9 @@ jobs:
         #   # retrieve these GitHub ENV variables
         #   echo "second one: ${{ env.Failures }} out of ${{ env.Tests }} tests failed on CI"
         run: |
-          export AWS_ACCESS_KEY_ID=${{ env.AWS_ACCESS_KEY_ID }}
-          export AWS_SECRET_ACCESS_KEY=${{ env.AWS_SECRET_ACCESS_KEY }}
-          export AWS_SESSION_TOKEN=${{ env.AWS_SESSION_TOKEN }}
+          export AWS_ACCESS_KEY_ID=${{ env.AWS_ACCESS_KEY_ID }} > /dev/null
+          export AWS_SECRET_ACCESS_KEY=${{ env.AWS_SECRET_ACCESS_KEY }} > /dev/null
+          export AWS_SESSION_TOKEN=${{ env.AWS_SESSION_TOKEN }} > /dev/null
           cd terraform && terraform init
       # - name: Terraform plan
       #   run: cd terraform && terraform plan -out tfplan.output
