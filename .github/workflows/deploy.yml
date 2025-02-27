@@ -45,13 +45,16 @@ jobs:
           failures=2
 
           # set them as GitHub ENV variables
-          echo "Tests=$tests" >> $GITHUB_ENV
+          echo "Tests=$tests" >> "$GITHUB_ENV"
           echo "Failures=$failures" >> $GITHUB_ENV
 
           # retrieve these GitHub ENV variables
-          echo "${{ env.Failures }} out of ${{ env.Tests }} tests failed on CI"
+          echo "first one: ${{ env.Failures }} out of ${{ env.Tests }} tests failed on CI"
 
-      # - name: Initialise Terraform
-      #   run: 'echo "github envs: $GITHUB_ENV" && cd terraform && terraform init'
+      - name: Initialise Terraform
+        run: |
+          # retrieve these GitHub ENV variables
+          echo "second one: ${{ env.Failures }} out of ${{ env.Tests }} tests failed on CI"
+        # run: 'echo "github envs: $GITHUB_ENV" && cd terraform && terraform init'
       # - name: Terraform plan
       #   run: cd terraform && terraform plan -out tfplan.output
