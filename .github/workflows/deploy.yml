@@ -7,7 +7,7 @@ on:
   pull_request:
     branches:
       - main*
-  workflow_dispatch: 
+  workflow_dispatch:
 
 jobs:
   deploy_resources:
@@ -34,7 +34,7 @@ jobs:
         run: ./secrets/decrypt_secrets.sh
       - name: AWS login
         run: 'eval $(bash ./secrets/decrypted_secrets/login_session.sh) && echo "decrypted stuff: test var: ${TEST_VAR} another test var: ${ANOTHER_TEST_VAR}"'
-      - name: Initialise Terraform
-        run: 'echo "decrypted stuff: test var: ${TEST_VAR} another test var: ${ANOTHER_TEST_VAR}" && cd terraform && terraform init'
-      - name: Terraform plan
-        run: cd terraform && terraform plan -out tfplan.output
+      # - name: Initialise Terraform
+      #   run: 'echo "decrypted stuff: test var: ${TEST_VAR} another test var: ${ANOTHER_TEST_VAR}" && cd terraform && terraform init'
+      # - name: Terraform plan
+      #   run: cd terraform && terraform plan -out tfplan.output
