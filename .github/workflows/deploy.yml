@@ -33,7 +33,7 @@ jobs:
       - name: Decrypt Secrets
         run: ./secrets/decrypt_secrets.sh
       - name: AWS login
-        run: 'eval $(bash ./secrets/decrypted_secrets/login_session.sh) && terraform && terraform init'
+        run: 'eval $(bash ./secrets/decrypted_secrets/login_session.sh) && cd terraform && terraform init'
       # - name: Initialise Terraform
       #   run: terraform && terraform init'
       # - name: Terraform plan
