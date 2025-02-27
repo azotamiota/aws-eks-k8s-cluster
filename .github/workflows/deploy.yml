@@ -31,11 +31,27 @@ jobs:
           echo "$GPG_PRIVATE_KEY" | gpg --batch --import
           echo "GPG key imported successfully"
           echo "github envs: cat $GITHUB_ENV"
-      - name: Decrypt Secrets
-        run: ./secrets/decrypt_secrets.sh
-      - name: AWS login
-        run: 'eval $(bash ./secrets/decrypted_secrets/login_session.sh)'
-      - name: Initialise Terraform
-        run: 'echo "github envs: $GITHUB_ENV" && cd terraform && terraform init'
-      - name: Terraform plan
-        run: cd terraform && terraform plan -out tfplan.output
+      # - name: Decrypt Secrets
+      #   run: ./secrets/decrypt_secrets.sh
+      # - name: AWS login
+      #   run: 'eval $(bash ./secrets/decrypted_secrets/login_session.sh)'
+
+      - name: Set and Retrieve Github ENV variables
+        # shell: bash
+        run: |
+
+          # define variables
+          tests=16
+          failures=2
+
+          # set them as GitHub ENV variables
+          echo "Tests=$tests" >> $GITHUB_ENV
+          echo "Failures=$failures" >> $GITHUB_ENV
+
+          # retrieve these GitHub ENV variables
+          echo "${{ env.Failures }} out of ${{ env.Tests }} tests failed on CI"
+
+      # - name: Initialise Terraform
+      #   run: 'echo "github envs: $GITHUB_ENV" && cd terraform && terraform init'
+      # - name: Terraform plan
+      #   run: cd terraform && terraform plan -out tfplan.output
