@@ -24,37 +24,41 @@ jobs:
       # - name: Code quality tests
       #   run: pre-commit install && pre-commit run --all-files
       #   continue-on-error: true
-      # - name: Import GPG Key
-      #   env:
-      #     GPG_PRIVATE_KEY: ${{ secrets.GPG_PRIVATE_KEY }}
-      #   run: |
-      #     echo "$GPG_PRIVATE_KEY" | gpg --batch --import
-      #     echo "GPG key imported successfully"
-      #     echo "github envs: cat $GITHUB_ENV"
-      # - name: Decrypt Secrets
-      #   run: ./secrets/decrypt_secrets.sh
-      # - name: AWS login
-      #   run: 'eval $(bash ./secrets/decrypted_secrets/login_session.sh)'
-
-      - name: Set and Retrieve Github ENV variables
-        shell: bash
+      - name: Import GPG Key
+        env:
+          GPG_PRIVATE_KEY: ${{ secrets.GPG_PRIVATE_KEY }}
         run: |
+          echo "$GPG_PRIVATE_KEY" | gpg --batch --import
+          echo "GPG key imported successfully"
+          echo "github envs: cat $GITHUB_ENV"
+      - name: Decrypt Secrets
+        run: ./secrets/decrypt_secrets.sh
+      - name: AWS login
+        run: bash ./secrets/decrypted_secrets/login_session.sh
 
-          # define variables
-          tests=16
-          failures=2
+      # - name: Set and Retrieve Github ENV variables
+      #   shell: bash
+      #   run: |
 
-          # set them as GitHub ENV variables
-          echo "Tests=$tests" >> "$GITHUB_ENV"
-          echo "Failures=$failures" >> $GITHUB_ENV
+      #     # define variables
+      #     tests=16
+      #     failures=2
 
-          # retrieve these GitHub ENV variables
-          echo "first one: ${{ env.Failures }} out of ${{ env.Tests }} tests failed on CI"
+      #     # set them as GitHub ENV variables
+      #     echo "Tests=$tests" >> "$GITHUB_ENV"
+      #     echo "Failures=$failures" >> $GITHUB_ENV
+
+      #     # retrieve these GitHub ENV variables
+      #     echo "first one: ${{ env.Failures }} out of ${{ env.Tests }} tests failed on CI"
 
       - name: Initialise Terraform
+        # run: |
+        #   # retrieve these GitHub ENV variables
+        #   echo "second one: ${{ env.Failures }} out of ${{ env.Tests }} tests failed on CI"
         run: |
-          # retrieve these GitHub ENV variables
-          echo "second one: ${{ env.Failures }} out of ${{ env.Tests }} tests failed on CI"
-        # run: 'echo "github envs: $GITHUB_ENV" && cd terraform && terraform init'
+          export AWS_ACCESS_KEY_ID=${{ env.AWS_ACCESS_KEY_ID }}
+          export AWS_SECRET_ACCESS_KEY=${{ env.AWS_SECRET_ACCESS_KEY }}
+          export AWS_SESSION_TOKEN=${{ env.AWS_SESSION_TOKEN }}
+          cd terraform && terraform init
       # - name: Terraform plan
       #   run: cd terraform && terraform plan -out tfplan.output
