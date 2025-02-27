@@ -35,6 +35,6 @@ jobs:
       - name: AWS login
         run: 'eval $(bash ./secrets/decrypted_secrets/login_session.sh)'
       - name: Initialise Terraform
-        run: cd terraform && terraform init'
+        run: cd terraform && terraform init
       # - name: Terraform plan
       #   run: cd terraform && terraform plan -out tfplan.output
