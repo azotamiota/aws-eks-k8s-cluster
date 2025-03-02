@@ -120,9 +120,9 @@ resource "null_resource" "service_account_cni_addon" {
 }
 
 
-resource "aws_ec2_tag" "tag_existing_networks" {
-  for_each    = toset(var.subnet_ids)
-  resource_id = each.value
-  key         = "kubernetes.io/cluster/${var.name}"
-  value       = "shared"
-}
+# resource "aws_ec2_tag" "tag_existing_networks" {
+#   for_each    = toset(var.subnet_ids)
+#   resource_id = each.value
+#   key         = "kubernetes.io/cluster/${var.name}"
+#   value       = "shared"
+# }

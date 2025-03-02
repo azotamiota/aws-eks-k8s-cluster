@@ -146,7 +146,7 @@ module "node_group" {
       #   GithubOrg   = "terraform-aws-modules"
       # }
       additional_tags = {
-        Name = "an3-worker"
+        Name = "eks-portfolio-eks-cluster-worker-2"
       }
     }
   }
