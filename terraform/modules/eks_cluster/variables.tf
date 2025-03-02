@@ -84,17 +84,17 @@ variable "permissions_boundary" {
   type        = string
 }
 
-variable "cluster_private_access" {
-  default     = true
-  description = "Indicates whether or not the Amazon EKS private API server endpoint is enabled."
-  type        = bool
-}
+# variable "cluster_private_access" {
+#   default     = true
+#   description = "Indicates whether or not the Amazon EKS private API server endpoint is enabled."
+#   type        = bool
+# }
 
-variable "cluster_public_access" {
-  default     = false
-  description = "Indicates whether or not the Amazon EKS public API server endpoint is enabled."
-  type        = bool
-}
+# variable "cluster_public_access" {
+#   default     = false
+#   description = "Indicates whether or not the Amazon EKS public API server endpoint is enabled."
+#   type        = bool
+# }
 
 # variable "account_name" {
 #   description = "account name"
