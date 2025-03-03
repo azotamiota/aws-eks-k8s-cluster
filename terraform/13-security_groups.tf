@@ -1,5 +1,5 @@
 # Cluster Security Group
-resource "aws_security_group" "eks_portfolio_cluster" {
+resource "aws_security_group" "eks_portfolio_cluster_sg" {
   name        = "eks-portfolio-cluster-security-group"
   description = "Cluster communication with worker nodes"
   vpc_id      = aws_vpc.eks_portfolio_vpc.id

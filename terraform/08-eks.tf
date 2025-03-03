@@ -1,11 +1,3 @@
-
-# failing as already exists needs deleteing cluster to look at logic
-
-# resource "aws_cloudwatch_log_group" "eks_cluster" {
-#   name              = "/aws/eks/${var.name}/cluster"
-#   retention_in_days = 7
-# }
-
 resource "aws_iam_role" "eks_portfolio_eks_role" {
   name = "eks-portfolio-role"
   tags = merge(tomap({ "Name" = "eks-portfolio-role" }), var.permanent_tags)
@@ -45,7 +37,7 @@ resource "aws_eks_cluster" "eks_portfolio_cluster" {
       aws_subnet.public_subnet[*].id,
       aws_subnet.private_subnet[*].id
     )
-    security_group_ids      = [aws_security_group.eks_portfolio_cluster.id]
+    security_group_ids      = [aws_security_group.eks_portfolio_cluster_sg.id]
     endpoint_private_access = true
     endpoint_public_access  = false
   }
@@ -58,7 +50,6 @@ resource "aws_eks_cluster" "eks_portfolio_cluster" {
 
   depends_on = [
     aws_iam_role_policy_attachment.eks_portfolio_cluster_AmazonEKSClusterPolicy,
-    # aws_iam_role_policy_attachment.cluster_AmazonEKSServicePolicy,
     aws_route_table_association.private,
     aws_route_table_association.public
   ]
