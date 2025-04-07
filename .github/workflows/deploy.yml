@@ -42,3 +42,7 @@ jobs:
         run: cd terraform && terraform init
       - name: Terraform plan
         run: cd terraform && terraform plan -out tfplan.output
+      - name: Terraform apply
+        run: cd terraform && terraform apply -auto-approve tfplan.output
+      - name: Terraform destroy
+        run: cd terraform && terraform destroy -auto-approve
