@@ -38,3 +38,11 @@ jobs:
         run: 'echo "decrypted stuff: test var: ${TEST_VAR} another test var: ${ANOTHER_TEST_VAR}" && cd terraform && terraform init'
       - name: Terraform plan
         run: cd terraform && terraform plan -out tfplan.output
+
+      # Uncomment for deploying
+      # - name: Terraform apply
+      #   run: cd terraform && terraform apply -auto-approve tfplan.output
+
+      # Uncomment for destroying
+      # - name: Terraform destroy
+      #   run: cd terraform && terraform destroy -auto-approve
