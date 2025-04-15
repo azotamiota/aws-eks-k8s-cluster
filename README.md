@@ -23,7 +23,7 @@ aws-eks-k8s-cluster/
 │       └── deploy.yml       # GitHub Actions pipeline to deploy the infrastructure
 ├── README.md
 ├── scripts
-│   ├── install_tfenv.sh     
+│   ├── install_tfenv.sh
 │   └── pre-commit.sh        # Code quality test
 ├── secrets
 │   ├── decrypt_secrets.sh   # Decrypt terraform.tfvars & secrets for logging in to AWS Account
